@@ -1,8 +1,8 @@
 import json
 import jsonlines
 data=[]
-file_name='./step1/raw_dataset/conversation/after/5.jsonl'
-save_name='./step1/raw_dataset/conversation/after/5_modified.jsonl'
+file_name='./step1/train/train.jsonl'
+save_name=file_name
 
 with open(file_name, "r", encoding="utf-8") as file:
     for line in file:
@@ -10,11 +10,8 @@ with open(file_name, "r", encoding="utf-8") as file:
 
 result=[]
 for i in data:
-    if 'modified' in i:
-        if i['modified']==True:
-            result.append(i)
-    else:
-        result.append(i)            
+    if 'category' in i:
+        del i['category']     
 
 
 with jsonlines.open(save_name, mode='w') as writer:
