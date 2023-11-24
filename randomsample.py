@@ -9,14 +9,14 @@ result =[]
 
 #with open("./step1/raw_dataset/gamseong/conv_unique.jsonl", "r", encoding="utf-8") as file:
 #        result=json.load(file)
-with open('./step2/train2/train.jsonl', "r", encoding="utf-8") as file:
+with open('vaiv_data_2/step3/train2/square.jsonl', "r", encoding="utf-8") as file:
     for line in file:
         result.append( json.loads(line))
 
 data=result
 # Randomly extract 100 items
 random.seed(42)  # To ensure reproducibility, set the random seed
-random_indices = random.sample(range(len(data)), 1000)
+random_indices = random.sample(range(len(data)), 100)
 extracted_data = [data[i] for i in random_indices]
 
 # Create two separate lists: extracted_data (100 items) and remaining_data (the rest)
